@@ -330,3 +330,65 @@ body {
     display: inline-block;
     margin: 0 5px;
 }
+
+/* ========================================= */
+/* --- Mobile Responsiveness (Small Screens) --- */
+/* ========================================= */
+@media (max-width: 768px) {
+    /* Shrink the giant title */
+    .birthday-title {
+        font-size: 2.8rem;
+        text-align: center;
+        letter-spacing: 1px;
+    }
+
+    /* Shrink the big confetti button */
+    .wish-btn {
+        font-size: 1.2rem;
+        padding: 12px 25px;
+    }
+
+    /* Wrap the 4 navigation buttons into a 2x2 grid */
+    .icon-bar {
+        flex-wrap: wrap;
+        padding: 0 15px;
+    }
+    
+    .desktop-icon {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+        flex: 1 1 40%; /* Makes them take up roughly half the row */
+        text-align: center;
+    }
+
+    /* Squeeze the popup windows to fit the screen */
+    .window {
+        width: 90vw;
+    }
+
+    .window-content {
+        padding: 20px; 
+    }
+
+    .fullscreen .window-content {
+        padding: 25px;
+        font-size: 1rem;
+    }
+
+    /* Adjust the retro taskbar text */
+    .taskbar {
+        width: 95%;
+        padding: 6px 10px;
+        bottom: 15px;
+    }
+
+    .start-btn {
+        font-size: 0.9rem;
+        padding: 6px 15px;
+    }
+
+    .sys-tray {
+        font-size: 0.9rem;
+        gap: 8px;
+    }
+}
