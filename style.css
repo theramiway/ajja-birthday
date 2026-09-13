@@ -1,0 +1,332 @@
+/* --- Reset & Base Styles --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #fdf0f3;
+    overflow: hidden; 
+}
+
+/* --- SVG Background Setup --- */
+.background-container {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    height: 100vh;
+    z-index: -1;
+}
+
+/* --- Central Layout (Title & Buttons) --- */
+.central-hub {
+    position: absolute;
+    top: 8vh; 
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px; 
+    z-index: 5;
+}
+
+.birthday-title {
+    font-family: 'Righteous', sans-serif;
+    font-size: 4.5rem;
+    color: #7a0026;
+    margin: 0;
+    text-shadow: 4px 4px 0px #ffb3c6, 8px 8px 0px rgba(122, 0, 38, 0.15);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.wish-btn {
+    background: #ff4d4d;
+    color: white;
+    border: 4px solid #7a0026;
+    border-radius: 15px;
+    padding: 15px 40px;
+    font-size: 1.5rem;
+    font-family: 'Righteous', sans-serif;
+    cursor: pointer;
+    box-shadow: 5px 5px 0px #7a0026;
+    transition: transform 0.1s, box-shadow 0.1s;
+    letter-spacing: 1px;
+}
+
+.wish-btn:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0px 0px 0px #7a0026;
+}
+
+/* --- The 4 Static Navigation Buttons --- */
+.icon-bar {
+    display: flex; 
+    gap: 20px; 
+    justify-content: center;
+}
+
+.desktop-icon {
+    background: #ffe4e9; 
+    border: 3px solid #7a0026; 
+    border-radius: 12px;
+    padding: 12px 25px; 
+    font-weight: 900; 
+    font-size: 1.1rem; 
+    color: #7a0026;
+    cursor: pointer; 
+    box-shadow: 3px 3px 0px #7a0026;
+    font-family: inherit;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.desktop-icon:active {
+    transform: translate(3px, 3px); 
+    box-shadow: 0px 0px 0px #7a0026;
+}
+
+/* --- Window/Modal Styling --- */
+.window {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    width: 450px; 
+    background: #fff; 
+    border: 4px solid #7a0026;
+    border-radius: 16px; 
+    box-shadow: 8px 8px 0px rgba(122, 0, 38, 0.15);
+    z-index: 10; 
+    display: flex; 
+    flex-direction: column;
+}
+
+.hidden { 
+    display: none !important; 
+}
+
+/* Fullscreen Modifier */
+.window.fullscreen {
+    width: 90vw; 
+    height: 90vh; 
+    max-width: 1200px;
+}
+
+.window-header {
+    background: #fff; 
+    border-bottom: 4px solid #7a0026; 
+    padding: 12px 16px;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    font-weight: 900; 
+    color: #7a0026; 
+    border-radius: 12px 12px 0 0;
+}
+
+.close-btn {
+    background: #ff4d4d; 
+    border: 2px solid #7a0026; 
+    border-radius: 50%;
+    width: 28px; 
+    height: 28px; 
+    color: white; 
+    font-weight: bold; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.window-content {
+    padding: 30px; 
+    background: #fdf4f6; 
+    height: 350px; 
+    overflow-y: auto;
+    border-radius: 0 0 12px 12px;
+}
+
+.fullscreen .window-content { 
+    height: 100%; 
+    padding: 50px; 
+    font-size: 1.2rem; 
+    line-height: 1.8; 
+}
+
+/* --- GOAT Section --- */
+.flex-col-center {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    height: 100%; 
+    text-align: center;
+}
+
+.quote-text { 
+    font-size: 1.3rem; 
+    font-weight: bold; 
+    color: #333; 
+    margin-bottom: 30px;
+}
+
+.love-btn {
+    background: white; 
+    border: 2px solid #7a0026; 
+    border-radius: 20px;
+    padding: 10px 20px; 
+    font-weight: bold; 
+    color: #7a0026; 
+    cursor: pointer;
+}
+
+/* --- Moments Section (3D Flip Cards & Toast) --- */
+.image-grid { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 15px; 
+    justify-content: center; 
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 130px; 
+    height: 130px;
+    perspective: 1000px; 
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; 
+    backface-visibility: hidden; 
+    border-radius: 8px;
+    border: 3px dashed #7a0026;
+    box-sizing: border-box;
+}
+
+.flip-card-front {
+    background-color: #ffe4e9;
+    color: #7a0026;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 1.1rem;
+    box-shadow: 3px 3px 0px rgba(122, 0, 38, 0.1);
+    z-index: 2; 
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+    overflow: hidden;
+    background-color: white;
+}
+
+.memory-img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    display: block; 
+    border-radius: 4px;
+}
+
+.toast {
+    position: absolute; 
+    top: 20px; 
+    right: 20px;
+    background: white; 
+    border: 3px solid #7a0026;
+    padding: 15px 25px; 
+    border-radius: 20px;
+    font-weight: bold; 
+    color: #7a0026;
+    box-shadow: 4px 4px 0px #7a0026;
+    z-index: 100;
+}
+
+/* --- Care Panel Specifics --- */
+.care-slider-container { margin-bottom: 25px; }
+.care-labels {
+    display: flex; justify-content: space-between; font-weight: 900;
+    color: #7a0026; font-size: 0.9rem; margin-bottom: 8px; font-family: sans-serif;
+}
+.care-track {
+    width: 100%; height: 8px; background: #e5ecef; border-radius: 4px; position: relative;
+}
+.care-thumb {
+    width: 22px; height: 22px; background: #7a0026; border-radius: 50%;
+    position: absolute; right: 0; top: -7px; box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* --- Retro Taskbar --- */
+.taskbar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1000px;
+    background: white;
+    border: 4px solid #7a0026;
+    border-radius: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 15px;
+    z-index: 100;
+    box-shadow: 4px 4px 0px rgba(122, 0, 38, 0.15);
+}
+
+.start-btn {
+    background: #7a0026;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 8px 25px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 1px;
+    transition: transform 0.1s;
+}
+
+.start-btn:active {
+    transform: scale(0.95);
+}
+
+.sys-tray {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #7a0026;
+    font-weight: 900;
+    font-size: 1.1rem;
+    padding-right: 10px;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #10b981;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 5px;
+}
