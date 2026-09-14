@@ -1,14 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // Animate the background leaves
-    gsap.to("#leaf-container > *", {
-        rotation: "random(-15, 15)",      
-        transformOrigin: "center center", 
-        duration: "random(1, 2)",         
-        yoyo: true,                       
-        repeat: -1,                       
-        ease: "sine.inOut"                
-    });
+    // Check if the screen is wider than a mobile phone (768px)
+    // The leaves will stay perfectly still as a beautiful background on phones!
+    if (window.innerWidth > 768) {
+        gsap.to("#leaf-container > *", {
+            rotation: "random(-15, 15)",      
+            transformOrigin: "center center", 
+            duration: "random(1, 2)",         
+            yoyo: true,                       
+            repeat: -1,                       
+            ease: "sine.inOut"                
+        });
+    }
 
 });
 
@@ -43,13 +46,24 @@ const comments = [
     "I love listening to your stories.",
     "You have the best smile!", 
     "You are the most amazing grandparent anyone could ask for.",
-    "Your peak dudeism energy is unmatched."
+    "Your peak dudeism energy is unmatched.",
+    "Chyaa-vaada-Kwalty-Paune Paach!",
+    "Low Angle selfie King",
+    "Modi Bhakt",
+    "Allagi Don"
+
 ];
+
+// Start at index 0. 
+let currentCommentIndex = 0;
 
 function randomizeComment() {
     const commentElement = document.getElementById('family-comment');
-    const randomIndex = Math.floor(Math.random() * comments.length);
-    commentElement.innerText = comments[randomIndex];
+    
+    // Move to the next quote in order. The % operator forces it to loop back to 0 at the end!
+    currentCommentIndex = (currentCommentIndex + 1) % comments.length;
+    
+    commentElement.innerText = comments[currentCommentIndex];
     
     gsap.fromTo(commentElement, 
         { scale: 0.9, opacity: 0.5 }, 
